@@ -1,0 +1,65 @@
+<?php
+// CSRF対策の固定トークンを生成
+if (!isset($_SESSION['ticket'])) {
+    // セッション変数にトークンを代入
+    $_SESSION['ticket'] = sha1(uniqid(mt_rand(), TRUE));
+}
+
+//トークンを変数に代入
+$ticket = $_SESSION['ticket'];
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>フォーム</title>
+</head>
+
+<body>
+    <h1>ユーザー登録</h1>
+    <form name="form1" method="post" action="confirm.php">
+        <table>
+            <tr>
+                <th>姓：</th>
+                <td><input type="text" id="name" name="name_1" size="20" maxlength="10" placeholder="ヤマダ" required></td>
+                <span id="name-error-message">全角カナ入力してください</span>
+            </tr>
+            <tr>
+                <th>名：</th>
+                <td><input type="text" id="name" name="name_2" size="20" maxlength="10" placeholder="タロウ" required></td>
+                <span id="name-error-message">全角カナ入力してください</span>
+            </tr>
+            <tr>
+                <th>メールアドレス：</th>
+                <td><input type="email" id="email" name="email" size="50" maxlength="254" required></td>
+            </tr>
+            </tr>
+        </table>
+        <input id="send" type="submit" value="登録">
+    </form>
+</body>
+
+<script>
+    const name = getElementById(name)
+    name = (name == null) ? "" : name;
+    if (name.match(/^[ァ-ヶー　]+$/)) { //"ー"の後ろの文字は全角スペースです。
+        return true;
+    } else {
+        return false;
+    }
+
+    var address = "test123@test.com";
+    var reg = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}\.[A-Za-z0-9]{1,}$/;
+    if (email()) {
+        console.log("正しい");
+    } else {
+        console.log("間違っている");
+    }
+</script>
+
+</html>
