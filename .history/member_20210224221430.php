@@ -8,8 +8,8 @@ $name_2 = htmlspecialchars($_SESSION['name_2'], ENT_QUOTES, 'UTF-8');
 $email = htmlspecialchars($_SESSION['email'], ENT_QUOTES, 'UTF-8');
 
 // 接続設定
-$user = 'fqqwmxbqmxmeas';
-$pass = '335968c21762071614c3ad78dcc4b1de359535b6470e093ff8a944b35f8ab7d4';
+$user = '';
+$pass = '19920629';
 
 // データベースに接続
 $dsn = 'postgres://fqqwmxbqmxmeas:335968c21762071614c3ad78dcc4b1de359535b6470e093ff8a944b35f8ab7d4@ec2-54-164-238-108.compute-1.amazonaws.com:5432/d1gmvpqr51sc1a';
